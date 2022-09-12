@@ -1,0 +1,58 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="/Users/rocke/Documents/TSU/web/web_lab_5/lab5css.css">
+    <title>Document</title>
+</head>
+<body>
+    <main>
+        <article id="article1">
+            <h1>Новость 1</h1>
+            <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Amet asperiores aut nihil! Corporis debitis labore fugiat id, eligendi ratione veritatis!</p>
+            <button onclick="showWindow('article1')">Открыть всплывающее окно</button>
+        </article>
+        <article id="article2">
+            <h1>Новость 2</h1>
+            <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Amet asperiores aut nihil! Corporis debitis labore fugiat id, eligendi ratione veritatis!</p>
+            <button onclick="showWindow('article2')">Открыть всплывающее окно</button>
+        </article>
+        <article id="article3">
+            <h1>Новость 3</h1>
+            <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Amet asperiores aut nihil! Corporis debitis labore fugiat id, eligendi ratione veritatis!</p>
+            <button onclick="showWindow('article3')">Открыть всплывающее окно</button>
+        </article>
+    </main>
+    <div id="madwindow">
+        <h1 id="newsheader"></h1>
+        <p><span id="newsnum"></span>Lorem ipsum dolor sit amet consectetur adipisicing elit. Amet asperiores aut nihil! Corporis debitis labore fugiat id, eligendi ratione veritatis!
+            Lorem ipsum dolor sit amet consectetur adipisicing elit. Aperiam hic, ipsa, ullam, cupiditate eveniet at voluptate corrupti commodi nobis ratione voluptatem! Vel animi totam cupiditate doloribus ad ab exercitationem officia eveniet impedit? Deleniti quasi nisi consectetur perspiciatis quibusdam nostrum, enim perferendis nam, magni molestias recusandae id libero vitae, repudiandae praesentium.</p>
+        <p id="help">для закрытия нажмите на окно</p>
+    </div>
+</body>
+<script>
+    var showing = false;
+    var hover = false;
+    function showWindow(number){
+        var main = document.getElementsByTagName('main')[0];
+        main.style.opacity = 0.5;
+        showing = true; 
+        var elem = document.getElementById(number);
+        document.getElementById('newsheader').innerHTML = elem.firstElementChild.innerHTML;
+        document.getElementById('newsnum').innerHTML =  elem.firstElementChild.innerHTML + ':'+ ' ';
+        document.getElementById('madwindow').style.display = 'unset';
+        
+        if(showing){
+            document.getElementById('madwindow').onclick = function(e) {
+                    main.style.opacity = 1;
+                    document.getElementById('madwindow').style.display = 'none';
+                    showing=false;
+                    console.log('zakrivaem');
+            };
+        }
+
+    }
+</script>
+</html>
